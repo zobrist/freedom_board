@@ -1,0 +1,4 @@
+---
+post: !ruby/struct:Post
+  user: amigo
+  text: hola amiga
