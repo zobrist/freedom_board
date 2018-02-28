@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'yaml/store'
+require 'date'
 
 get '/' do
   erb :index
@@ -8,13 +9,16 @@ end
 post '/' do
   @text = params['text']
   @user = params['user']
+  @time = (DateTime.now).strftime "%m/%d/%Y %H:%M:%S"
   
-  Post = Struct.new :user, :text
-  post = Post.new(@user, @text)
-  store = YAML::Store.new "post.store"
+  if @user == '' then @user = 'Anonymous' end
   
-  store.transaction do
-	store["post"] = post
+  Post = Struct.new :user, :text, :time
+  post = Post.new(@user, @text, @time)
+  @store = YAML::Store.new "posts.yml"
+  
+  @store.transaction do
+	@store[@time] = post
   end
  
   erb :index 
