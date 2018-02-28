@@ -1,9 +1,10 @@
 ---
-02/28/2018 14:41:08: !ruby/struct:Post
-  user: Anonymous
-  text: hello
-  time: 02/28/2018 14:41:08
-02/28/2018 14:41:43: !ruby/struct:Post
-  user: dublin
-  text: dublin
-  time: 02/28/2018 14:41:43
+02/28/2018 15:55:18:
+- dublin
+- annyeong haseyo
+02/28/2018 15:59:10:
+- pat
+- hello
+02/28/2018 16:22:49:
+- dublin
+- its nice
