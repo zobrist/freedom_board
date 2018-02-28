@@ -3,7 +3,14 @@ require 'yaml/store'
 require 'yaml'
 require 'date'
 
-get '/' do
+def load_file
+  if File.exist?("posts.yml")
+    @posts = YAML.load(File.read("posts.yml"))
+  end
+end
+
+get '/' do 
+  load_file
   erb :index
 end
 
@@ -21,9 +28,16 @@ post '/' do
   @store.transaction do
 	@store[@time] = [@user, @text]
   end
- 
+  
+  load_file
   erb :index 
 end
+
+post '/search' do
+  load_file
+  @keyword = params['search']
+  erb :index
+end 
 
 	
 
