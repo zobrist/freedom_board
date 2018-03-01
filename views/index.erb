@@ -28,7 +28,7 @@
 			<table align = "center" border="1px solid-black" style="width:50%;" cellpadding="10">					   
 			 <tr>
 			   <td>
-			   	  <%@posts.reverse_each{|time,value| %>			   	  					   
+			   	  <%if File.exist?("posts.yml") then @posts.reverse_each{|time,value| %>			   	  					   
 				    <table align = "center" frame="below" border="1px solid-black;" style="border-collapse: collapse;" cellpadding="20">
 				      	<tr>
 				        	<th style="width: 10%; border: none;" align="left">
@@ -41,7 +41,7 @@
 					    		<p><%=value[1]%> </p>
 					    </tr>
 					</table>				 
-				  <%}%>
+				  <%} end%>
 				</td>				  
 				</tr>			   
 			</table>
