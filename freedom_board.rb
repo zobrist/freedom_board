@@ -36,7 +36,7 @@ end
 post '/search' do
   load_file
   @keyword = params['search']
-  @posts = @posts.select{|time, value| value[1] =~ Regexp.new(@keyword)}
+  @posts = @posts.select{|time, value| value[0] =~ Regexp.new(@keyword, Regexp::IGNORECASE) || value[1] =~ Regexp.new(@keyword, Regexp::IGNORECASE)}
   erb :index
 end 
 
